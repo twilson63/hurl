@@ -1,0 +1,23 @@
+Source: hurl
+Maintainer: HURL Contributors <contributors@hurl.dev>
+Homepage: https://github.com/hurl/hurl
+Standards-Version: 4.6.1
+Section: net
+Priority: optional
+Build-Depends: debhelper-compat (= 13), cargo, rustc, pkg-config, libssl-dev
+
+Package: hurl
+Architecture: amd64 arm64 i386 armhf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ca-certificates
+Description: Modern HTTP CLI tool
+ HURL is a blazingly fast, user-friendly HTTP client written in Rust.
+ .
+ Features:
+  - Fast - Written in Rust for maximum performance
+  - Simple - Intuitive command-line interface
+  - HTTP/1.1 & HTTP/2 - Full protocol support
+  - Secure - Built-in SSL/TLS support
+  - JSON & XML - Native data format support
+  - Colorized Output - Beautiful formatted responses
+  - History - Keep track of recent requests
+  - Assertions - Built-in testing capabilities

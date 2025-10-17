@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+case "$1" in
+  configure)
+    if [ -x /usr/sbin/update-alternatives ]; then
+      update-alternatives --install /usr/bin/hurl hurl /usr/bin/hurl 100
+    fi
+    
+    if [ -x /usr/share/man/man1 ]; then
+      mandb 2>/dev/null || true
+    fi
+    ;;
+  abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+  *)
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+exit 0

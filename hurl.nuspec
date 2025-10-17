@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>hurl</id>
+    <version>0.1.0</version>
+    <packageSourceUrl>https://github.com/hurl/hurl</packageSourceUrl>
+    <owners>HURL Contributors</owners>
+    <title>HURL - Modern HTTP CLI</title>
+    <authors>HURL Contributors</authors>
+    <licenseUrl>https://github.com/hurl/hurl/blob/main/LICENSE-MIT</licenseUrl>
+    <projectUrl>https://github.com/hurl/hurl</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/hurl/hurl/main/icon.png</iconUrl>
+    <copyright>Copyright HURL Contributors</copyright>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+HURL is a blazingly fast, user-friendly HTTP client written in Rust.
+
+Features:
+- Fast - Written in Rust for maximum performance
+- Simple - Intuitive command-line interface  
+- HTTP/1.1 &amp; HTTP/2 - Full protocol support
+- Secure - Built-in SSL/TLS support
+- JSON &amp; XML - Native data format support
+- Colorized Output - Beautiful formatted responses
+- History - Keep track of recent requests
+- Assertions - Built-in testing capabilities
+    </description>
+    <summary>Modern HTTP CLI tool written in Rust</summary>
+    <releaseNotes>Initial release with full HTTP/1.1 and HTTP/2 support</releaseNotes>
+    <tags>http client cli rust networking</tags>
+    <projectSourceUrl>https://github.com/hurl/hurl</projectSourceUrl>
+    <bugTrackerUrl>https://github.com/hurl/hurl/issues</bugTrackerUrl>
+    <dependencies>
+      <dependency id="vcredist140" version="[14.0,)" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	cargo build --release --manifest-path=crates/hurl-cli/Cargo.toml
+
+override_dh_auto_install:
+	mkdir -p debian/hurl/usr/bin
+	mkdir -p debian/hurl/usr/share/man/man1
+	mkdir -p debian/hurl/usr/share/bash-completion/completions
+	mkdir -p debian/hurl/usr/share/zsh/vendor-completions
+	mkdir -p debian/hurl/usr/share/fish/vendor_completions.d
+	
+	install -D -m 755 target/release/hurl debian/hurl/usr/bin/hurl
+	install -D -m 644 man/hurl.1 debian/hurl/usr/share/man/man1/hurl.1
+	install -D -m 644 completions/hurl.bash debian/hurl/usr/share/bash-completion/completions/hurl
+	install -D -m 644 completions/hurl.zsh debian/hurl/usr/share/zsh/vendor-completions/_hurl
+	install -D -m 644 completions/hurl.fish debian/hurl/usr/share/fish/vendor_completions.d/hurl.fish
+
+override_dh_auto_test:
+	cargo test --release --manifest-path=crates/hurl-cli/Cargo.toml
+
+override_dh_strip:
+	strip --strip-all debian/hurl/usr/bin/hurl

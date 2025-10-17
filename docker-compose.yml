@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  hurl:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hurl:latest
+    container_name: hurl-cli
+    
+    volumes:
+      - ./requests:/workspace/requests:ro
+      - ./responses:/workspace/responses
+      - ${HOME}/.hurl:/home/.hurl
+    
+    environment:
+      - RUST_LOG=info
+      - HURL_TIMEOUT=30
+      - SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+    
+    ports:
+      - "8080:8080"
+    
+    stdin_open: true
+    tty: true
+    
+    networks:
+      - hurl-network
+    
+    restart: no
+
+  hurl-server:
+    image: httpbin/httpbin:latest
+    container_name: hurl-test-server
+    
+    ports:
+      - "8081:80"
+    
+    environment:
+      - GUNICORN_CMD_ARGS=--bind=0.0.0.0:80
+    
+    networks:
+      - hurl-network
+    
+    restart: unless-stopped
+
+networks:
+  hurl-network:
+    driver: bridge
+
+volumes:
+  requests:
+  responses:

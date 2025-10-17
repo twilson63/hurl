@@ -1,0 +1,154 @@
+HURL - Modern HTTP CLI
+Copyright (c) 2025 HURL Contributors
+
+This project includes software developed by the HURL Project and its contributors.
+
+HURL is licensed under either of:
+- Apache License, Version 2.0 (LICENSE-APACHE)
+- MIT license (LICENSE)
+at your option.
+
+---
+
+## Third-Party Licenses
+
+This software includes components from the following third-party libraries:
+
+### reqwest (0.11)
+License: MIT/Apache-2.0
+Copyright (c) 2015-2023 Sean McArthur
+https://github.com/seanmonstar/reqwest
+Provides HTTP client implementation.
+
+### tokio (1.0)
+License: MIT
+Copyright (c) 2023 Tokio Contributors
+https://github.com/tokio-rs/tokio
+Provides async runtime and utilities.
+
+### serde (1.0)
+License: MIT/Apache-2.0
+Copyright (c) 2017 David Tolnay
+https://github.com/serde-rs/serde
+Provides serialization framework.
+
+### serde_json (1.0)
+License: MIT/Apache-2.0
+Copyright (c) 2014 David Tolnay
+https://github.com/serde-rs/json
+Provides JSON serialization/deserialization.
+
+### clap (4.0)
+License: MIT/Apache-2.0
+Copyright (c) 2015 Kevin B. Knapp
+https://github.com/clap-rs/clap
+Provides command-line argument parsing.
+
+### chrono (0.4)
+License: MIT/Apache-2.0
+Copyright (c) 2014-2023 Chrono Contributors
+https://github.com/chronotope/chrono
+Provides timestamp and datetime handling.
+
+### uuid (1.0)
+License: MIT/Apache-2.0
+Copyright (c) 2014 Steven Fackler
+https://github.com/uuid-rs/uuid
+Provides UUID generation and parsing.
+
+### colored (2.0)
+License: MPL-2.0
+Copyright (c) 2017 Thomas Wickham
+https://github.com/mackwic/colored
+Provides terminal color output.
+
+### base64 (0.21)
+License: MIT/Apache-2.0
+Copyright (c) 2015 Alice Maz
+https://github.com/marshallpierce/rust-base64
+Provides Base64 encoding/decoding.
+
+### regex (1.0)
+License: MIT/Apache-2.0
+Copyright (c) 2014 The Rust Project Developers
+https://github.com/rust-lang/regex
+Provides regular expression support.
+
+### anyhow (1.0)
+License: MIT/Apache-2.0
+Copyright (c) 2019 David Tolnay
+https://github.com/dtolnay/anyhow
+Provides flexible error handling.
+
+### thiserror (1.0)
+License: MIT/Apache-2.0
+Copyright (c) 2019 David Tolnay
+https://github.com/dtolnay/thiserror
+Provides custom error types.
+
+### brotli (3.3)
+License: MIT
+Copyright (c) 2016-2023 Brotli Authors
+https://github.com/dropbox/rust-brotli
+Provides Brotli compression support.
+
+### flate2 (1.0)
+License: MIT/Apache-2.0
+Copyright (c) 2014 Alex Crichton
+https://github.com/alexcrichton/flate2-rs
+Provides Gzip compression support.
+
+### serde_urlencoded (0.7)
+License: MIT/Apache-2.0
+Copyright (c) 2016 Stanislav Panferov
+https://github.com/serde-rs/form_urlencoded
+Provides URL-encoded form data handling.
+
+### url (2.4)
+License: MIT/Apache-2.0
+Copyright (c) 2013-2023 The url-rs developers
+https://github.com/servo/rust-url
+Provides URL parsing and validation.
+
+### md5 (0.7)
+License: MIT
+Copyright (c) 2015-2020 Ivan Ukhov
+https://github.com/RustCrypto/hashes
+Provides MD5 hashing.
+
+---
+
+## License Compliance
+
+All third-party components are licensed under permissive open-source licenses
+(MIT, Apache 2.0, or MPL-2.0) and are compatible with HURL's dual licensing
+model (MIT/Apache-2.0).
+
+For detailed information about each dependency, please refer to:
+1. The individual package repositories listed above
+2. Cargo.toml in the root directory
+3. Cargo.lock for specific versions
+4. LICENSE and LICENSE-APACHE files in this repository
+
+---
+
+## Attribution
+
+We thank all contributors to the open-source Rust ecosystem, without which
+HURL would not be possible. The Rust community's dedication to quality
+software and best practices is greatly appreciated.
+
+---
+
+## Questions about Licensing
+
+If you have questions about licensing or third-party components:
+1. Review the NOTICE file (this file)
+2. Check the LICENSE and LICENSE-APACHE files
+3. Open an issue on GitHub: https://github.com/hurl/hurl/issues
+4. Contact the maintainers
+
+---
+
+Last Updated: 2025-10-16
+HURL Version: 0.1.0

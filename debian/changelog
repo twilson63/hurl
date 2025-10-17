@@ -1,0 +1,11 @@
+hurl (0.1.0) focal; urgency=medium
+
+  * Initial release
+  * HTTP/1.1 and HTTP/2 support
+  * JSON/XML data format support
+  * Built-in assertions and testing
+  * Command history tracking
+  * SSL/TLS security support
+  * Bash, Zsh, Fish completions
+
+ -- HURL Contributors <contributors@hurl.dev>  Thu, 16 Oct 2025 12:00:00 +0000

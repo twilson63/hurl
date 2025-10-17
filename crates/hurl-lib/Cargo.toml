@@ -1,0 +1,31 @@
+[package]
+name = "hurl-lib"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+reqwest = { workspace = true }
+serde = { workspace = true }
+serde_json.workspace = true
+serde_urlencoded.workspace = true
+base64.workspace = true
+tokio = { workspace = true }
+colored.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+regex.workspace = true
+uuid = { workspace = true }
+chrono = { workspace = true }
+url.workspace = true
+tracing = "0.1"
+tracing-subscriber = "0.3"
+md5.workspace = true
+flate2.workspace = true
+brotli.workspace = true
+
+[lib]
+name = "hurl_lib"
+path = "src/lib.rs"

@@ -1,0 +1,359 @@
+.TH hurl 1 "October 2025" "hurl 0.1.0" "User Commands"
+.SH NAME
+hurl \- Modern HTTP client and testing tool
+
+.SH SYNOPSIS
+.B hurl
+.RI [ OPTIONS ]
+.I METHOD URL
+.br
+.B hurl
+.I METHOD
+.I URL
+.RI [ HEADERS ]
+.RI [ DATA ]
+
+.SH DESCRIPTION
+HURL is a blazingly fast, user-friendly HTTP client written in Rust. It provides
+a simple yet powerful command-line interface for making HTTP requests, testing APIs,
+and managing HTTP interactions with support for modern protocols and features.
+
+.SH METHODS
+.TP
+.B get
+Send a GET request to the specified URL
+.TP
+.B post
+Send a POST request to the specified URL
+.TP
+.B put
+Send a PUT request to the specified URL
+.TP
+.B delete
+Send a DELETE request to the specified URL
+.TP
+.B patch
+Send a PATCH request to the specified URL
+.TP
+.B head
+Send a HEAD request to the specified URL
+.TP
+.B options
+Send an OPTIONS request to the specified URL
+
+.SH OPTIONS
+.TP
+.BR \-H ", " \-\-header " \fIHEADER\fR"
+Add a custom header to the request. Can be specified multiple times.
+Format: "Name: Value"
+.br
+Example: \-H "Content-Type: application/json"
+
+.TP
+.BR \-d ", " \-\-data " \fIDATA\fR"
+Send data in the request body. For POST/PUT/PATCH requests.
+Can be JSON string, form data, or raw text.
+.br
+Example: \-d '{"key": "value"}'
+
+.TP
+.BR \-u ", " \-\-user " \fIUSER[:PASSWORD]\fR"
+Set authentication credentials. Format: username:password
+For basic authentication.
+.br
+Example: \-u "user:pass"
+
+.TP
+.BR \-p ", " \-\-password " \fIPASSWORD\fR"
+Specify password separately from username
+
+.TP
+.BR \-o ", " \-\-output " \fIFILE\fR"
+Write response body to file instead of stdout
+.br
+Example: \-o response.json
+
+.TP
+.BR \-b ", " \-\-cookie " \fICOOKIES\fR"
+Send cookies with the request.
+Format: "name=value; name2=value2"
+.br
+Example: \-b "session=abc123"
+
+.TP
+.BR \-t ", " \-\-timeout " \fISECONDS\fR"
+Set request timeout in seconds. Default: 30
+.br
+Example: \-t 60
+
+.TP
+.BR \-f ", " \-\-follow
+Follow HTTP redirects automatically. Default: false
+
+.TP
+.BR \-i ", " \-\-show-headers
+Include response headers in output
+
+.TP
+.BR \-I ", " \-\-show-response-headers
+Show response headers only, omit body
+
+.TP
+.BR \-L ", " \-\-location
+Follow location headers in redirects
+
+.TP
+.BR \-k ", " \-\-insecure
+Allow insecure SSL/TLS connections (ignore certificate validation)
+
+.TP
+.BR \-\-compressed
+Request compressed response from server
+Accept gzip, deflate, brotli encodings
+
+.TP
+.BR \-\-proxy " \fIPROXY_URL\fR"
+Use specified proxy server for requests
+.br
+Example: \-\-proxy "http://proxy.example.com:8080"
+
+.TP
+.BR \-\-cert " \fICERT_FILE\fR"
+Use client certificate for mutual TLS authentication
+.br
+Example: \-\-cert client.crt
+
+.TP
+.BR \-\-key " \fIKEY_FILE\fR"
+Use private key with client certificate
+.br
+Example: \-\-key client.key
+
+.TP
+.BR \-\-cacert " \fICA_FILE\fR"
+Use custom CA certificate for verification
+.br
+Example: \-\-cacert ca-bundle.crt
+
+.TP
+.BR \-m ", " \-\-method " \fIMETHOD\fR"
+Explicitly specify HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)
+
+.TP
+.BR \-\-auth " \fITYPE\fR"
+Set authentication type: basic, digest, bearer, oauth2
+.br
+Example: \-\-auth basic
+
+.TP
+.BR \-v ", " \-\-verbose
+Enable verbose output with request/response details
+
+.TP
+.BR \-s ", " \-\-silent
+Silent mode - minimal output
+
+.TP
+.BR \-\-colorize
+Enable colored output (default: auto)
+
+.TP
+.BR \-\-no-colorize
+Disable colored output
+
+.TP
+.BR \-\-pretty
+Pretty print JSON response
+
+.TP
+.BR \-\-raw
+Output raw response without formatting
+
+.TP
+.BR \-\-json
+Parse and display response as JSON
+
+.TP
+.BR \-\-form
+Send request as form data (application/x-www-form-urlencoded)
+
+.TP
+.BR \-\-multipart
+Send request as multipart form data
+
+.TP
+.BR \-V ", " \-\-version
+Display version information
+
+.TP
+.BR \-h ", " \-\-help
+Show help message and exit
+
+.SH EXAMPLES
+.TP
+Basic GET request:
+.B hurl get https://api.example.com/users
+
+.TP
+POST with JSON data:
+.B hurl post https://api.example.com/users \-H "Content-Type: application/json" \-d '{"name":"John","email":"john@example.com"}'
+
+.TP
+With authentication:
+.B hurl get https://api.example.com/protected \-u username:password
+
+.TP
+Save response to file:
+.B hurl get https://api.example.com/data \-o response.json
+
+.TP
+Follow redirects:
+.B hurl get https://example.com/redirect \-f
+
+.TP
+Show all headers:
+.B hurl get https://api.example.com/users \-i
+
+.TP
+Pretty print JSON:
+.B hurl get https://api.example.com/users \-\-pretty
+
+.TP
+Set timeout:
+.B hurl get https://slow.example.com/endpoint \-t 60
+
+.TP
+Multiple headers:
+.B hurl post https://api.example.com/data \-H "Authorization: Bearer token123" \-H "X-Custom: value"
+
+.TP
+Use proxy:
+.B hurl get https://api.example.com \-\-proxy http://proxy:8080
+
+.TP
+Client certificate:
+.B hurl get https://secure.example.com \-\-cert client.crt \-\-key client.key
+
+.TP
+Verbose mode with all details:
+.B hurl post https://api.example.com/users \-v \-d '{"test": "data"}'
+
+.SH EXIT CODES
+.TP
+.B 0
+Success - request completed successfully
+
+.TP
+.B 1
+General error - connection failed, invalid input, or other error
+
+.TP
+.B 2
+Network error - DNS resolution, connection refused, timeout
+
+.TP
+.B 3
+HTTP error - 4xx or 5xx response received
+
+.TP
+.B 4
+SSL/TLS error - certificate validation failed
+
+.TP
+.B 5
+Authentication error - credentials rejected or missing
+
+.TP
+.B 6
+Timeout error - request exceeded timeout
+
+.SH ENVIRONMENT
+.TP
+.B HTTP_PROXY
+HTTP proxy URL (http://proxy.example.com:8080)
+
+.TP
+.B HTTPS_PROXY
+HTTPS proxy URL (http://proxy.example.com:8080)
+
+.TP
+.B NO_PROXY
+Hosts to bypass proxy (comma-separated list)
+
+.TP
+.B HURL_HOME
+HURL home directory for history and config (~/.hurl by default)
+
+.TP
+.B RUST_LOG
+Set logging level (debug, info, warn, error)
+
+.TP
+.B SSL_CERT_FILE
+Path to CA certificate bundle for verification
+
+.SH FILES
+.TP
+.B ~/.hurl/
+HURL home directory
+
+.TP
+.B ~/.hurl/history
+Request/response history file
+
+.TP
+.B ~/.hurl/config
+Configuration file
+
+.TP
+.B ~/.hurl/cookies.json
+Persistent cookies storage
+
+.SH FEATURES
+.TP
+.B HTTP/1.1 and HTTP/2 support
+Full protocol compliance with modern HTTP features
+
+.TP
+.B JSON/XML parsing
+Automatic detection and formatting of data formats
+
+.TP
+.B Built-in assertions
+Test responses with built-in assertion capabilities
+
+.TP
+.B Request history
+Automatic tracking and replay of recent requests
+
+.TP
+.B SSL/TLS security
+Support for mutual TLS, custom CAs, and certificate pinning
+
+.TP
+.B Compression support
+Automatic handling of gzip, deflate, and brotli encodings
+
+.TP
+.B Cookie management
+Persistent cookie storage and automatic session handling
+
+.SH SEE ALSO
+.BR curl (1),
+.BR wget (1),
+.BR httpie (1)
+
+.SH AUTHOR
+HURL Contributors <contributors@hurl.dev>
+
+.SH REPORTING BUGS
+Report bugs at: https://github.com/hurl/hurl/issues
+
+.SH LICENSE
+Licensed under either of:
+.TP
+Apache License, Version 2.0
+.TP
+MIT license
+
+at your option. See LICENSE-APACHE and LICENSE-MIT in the source distribution.
